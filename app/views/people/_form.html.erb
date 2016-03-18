@@ -1,0 +1,14 @@
+<%= simple_form_for @person do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :second_name %>
+  <%= f.input :last_name %>
+  <%= f.input :dob %>
+   <%= simple_form_for :location do |p| %>
+    <%= p.input :address %>
+    <%= p.input :city %>
+
+   <% end %>
+  <%= f.submit %>
+<% end %>
+
+

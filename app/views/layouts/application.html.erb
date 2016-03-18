@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+ <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tag %>
+
+
+    <%= stylesheet_link_tag 'estilo' %>
+
+  </head>
+
+  <body>
+   <%= render "shared/headers" %>
+
+    <div class="container-fluid">
+      <div class="row">
+      <% if signed_in? -%>
+        <%= render "shared/menus" %>
+        <% end %>
+
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+         <%= yield %>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+</html>

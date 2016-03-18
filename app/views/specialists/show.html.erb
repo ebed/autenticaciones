@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Pacientes</h1>
+<h2 class="sub-header">Detalle</h2>
+<p>
+  <strong>Nombre:</strong>
+  <%= @specialist.persona.first_name %> <%= @specialist.persona.second_name%>
+  <%= @specialist.persona.last_name %>
+</p>
+<p>
+  <strong>Fecha Nacimiento</strong>
+  <%= @specialist.persona.dob %>
+</p>
+<p>
+  <strong>Direccion</strong>
+  <%= @specialist.persona.location.address %> ,
+  <%= @specialist.persona.location.city %>,
+  <%= @specialist.persona.location.country %>
+</p>
+
+<p>
+  <strong>ID Persona</strong>
+  <%= @specialist.id %>
+</p>
+
+
+<%= link_to 'Edit', edit_specialist_path(@specialist) %> |
+<%= link_to 'Back', specialists_path %>

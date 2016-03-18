@@ -1,0 +1,18 @@
+<%= simple_form_for @patient do |f| %>
+  <%= f.simple_fields_for :persona do |p| %>
+    <%= p.input :first_name , label: "Primer Nombre" %>
+    <%= p.input :second_name , label: "Segundo Nombre" %>
+    <%= p.input :last_name, label: "Apellido"  %>
+    <%= p.input :dob, label: "Fecha Nacimiento" %>
+    <%= p.simple_fields_for :location do |l| %>
+      <%= l.input :address , label: "Dirección" %>
+      <%= l.input :city, label: "Ciudad"  %>
+
+    <% end %>
+  <% end %>
+  <%= f.submit %>
+
+
+<% end %>
+
+

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Especialistas</h1>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+
+        <th>Apellido</th>
+        <th>Fecha Nacimiento</th>
+
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+
+    <% @specialists.each do |especialista| %>
+      <tr>
+        <td><%= especialista.id %></td>
+        <td><%= especialista.persona.first_name %> <%= especialista.persona.second_name %></td>
+        <td><%= especialista.persona.last_name %></td>
+        <td><%= especialista.persona.dob %></td>
+
+
+
+        <td><%= link_to 'Detalle', especialista %></td>
+        <td><%= link_to 'Editar', edit_specialist_path(especialista) %></td>
+        <td><%= link_to 'Eliminar', especialista, method: :delete, data: { confirm: 'Seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Especialista', new_specialist_path %>
