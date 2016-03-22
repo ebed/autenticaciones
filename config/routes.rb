@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resources :personas do
       resources :locations
     end
+    resources :fichas do
+      resources :registros
+    end
   end
   resources :posts
   root 'paginas#index'

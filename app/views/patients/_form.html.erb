@@ -1,13 +1,20 @@
-<%= simple_form_for @patient do |f| %>
+<%= simple_form_for @patient, :html  => {class: 'form-inline'} do |f| %>
   <%= f.simple_fields_for :persona do |p| %>
-    <%= p.input :first_name , label: "Primer Nombre" %>
-    <%= p.input :second_name , label: "Segundo Nombre" %>
-    <%= p.input :last_name, label: "Apellido"  %>
-    <%= p.input :dob, label: "Fecha Nacimiento" %>
-    <%= p.simple_fields_for :location do |l| %>
-      <%= l.input :address , label: "Dirección" %>
-      <%= l.input :city, label: "Ciudad"  %>
 
+    <%= p.input :first_name, label: "Primer Nombre", placeholder: "Primer Nombre", :input_html => {:style => 'width: 250px'}%>
+    <%= p.input :second_name, label: "Segundo Nombre", :input_html => {:style => 'width: 250px'} %>
+
+    <%= p.input :last_name,  label: "Apellido", :input_html => {:style => 'width: 400px'}  %>
+
+    <p/>
+
+    <%= p.input :rut,  label: "RUT", :input_html => {:style => 'width: 250px'} %>
+    <%= p.input :dv , label: " - ", :input_html => {:style => 'width: 30px'}%>
+    <p/>
+     <%= p.input :dob,  label: "Fecha Nacimiento", :input_html => {:style => 'width: 100px'}%>
+    <%= p.simple_fields_for :location do |l| %>
+      <%= l.input :address ,  label: "Dirección" %>
+      <%= l.input :city,  label: "Ciudad"  %>
     <% end %>
   <% end %>
   <%= f.submit %>

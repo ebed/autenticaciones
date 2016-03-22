@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Ficha</h1>
+
+<h2 class="sub-header">Registros de Paciente</h2>
+<div >
+   <table class="table table-bordered table-hover">
+
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Fecha Creacion Ficha</th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+    <% if tieneFicha? %>
+      <tr>
+        <td><%= @ficha.id %></td>
+        <td><%= @ficha.created_at %></td>
+      </tr>
+      <tr>
+
+        <td colspan=4>
+         <table class="table table-sm table-hover">
+
+          <% if tieneRegistros? -%>
+
+             <thead>
+              <tr>
+                <th>Id</th>
+                <th>RESUMEN</th>
+                <th>FECHA</th>
+                <th>ESPECIALISTA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @ficha.registros.each do |reg| %>
+                <tr>
+                  <td><%= reg.id %></td>
+                  <td><%= reg.resumen %></td>
+                  <td><%= reg.fecha %></td>
+
+                  <% @specialist = Specialist.find_by(reg.specialist_id) %>
+
+                  <td><%= @specialist.persona.first_name   %> <%= @specialist.persona.last_name   %> </td>
+
+                </tr>
+              <% end %>
+
+          <% end %>
+            <tr>
+                <td>
+                  <%= link_to 'Crea Registro', new_patient_ficha_registro_path(:ficha_id => @ficha.id) %>
+                </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+
+
+    <% end %>
+  </tbody>
+</table>
+</div>
+

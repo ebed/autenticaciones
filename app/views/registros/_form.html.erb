@@ -1,0 +1,8 @@
+<%= simple_form_for ([@patient, @ficha, @registro])  do |f| %>
+  <%= f.input :fecha %>
+  <%= f.input :resumen %>
+  <%= f.input :detalle %>
+  <%= f.input :specialist_id%>
+
+  <%= f.submit %>
+<% end %>

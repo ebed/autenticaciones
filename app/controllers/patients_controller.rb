@@ -86,7 +86,7 @@ class PatientsController < ApplicationController
     def patient_params
       params.require(:patient).permit(:id, :persona_id,
             persona_attributes:
-            [:id, :first_name, :second_name, :last_name, :dob, :location_id,
+            [:id, :first_name, :second_name, :last_name, :dob, :location_id,:rut, :dv,
               location_attributes:
               [:id, :address, :city, :country]])
     end
