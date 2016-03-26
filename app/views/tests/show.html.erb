@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Pruebas</h1>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @test.nombre %>
+</p>
+<p>
+  <strong>Detalle:</strong>
+  <%= @test.detalle %>
+</p>
+
+
+<table class="table table-bordered">
+  <thead  class="thead-inverse">
+    <tr>
+      <th colspan=2>Métricas
+      <%= link_to new_test_metrica_path(:test_id => @test.id), class: "btn btn-success btn-xs" do %>
+            <i class="glyphicon glyphicon-plus"> </i>
+          <% end %>
+        </th>
+    </tr>
+    <tr>
+      <th width=250> Nombre </th>
+      <th colspan=2> Detalle </th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @metricas.each do |m| %>
+
+      <tr>
+        <td> <%= m.nombre %> </td>
+        <td> <%= m.detalle %> </td>
+        <td width=120>
+
+          <div class="btn-group  btn-group-sm" role="group" aria-label="...">
+          <%= link_to test_metrica_path(:test_id =>@test.id,:id => m.id), class: "btn btn-info" do %>
+            <i class="glyphicon glyphicon-eye-open"></i>
+          <% end %>
+
+          <%= link_to  test_metrica_path(:test_id =>@test.id,:id => m.id), class: "btn btn-primary" do %>
+            <i class="glyphicon glyphicon-edit"></i>
+          <% end %>
+          <%= link_to  test_metrica_path(:test_id =>@test.id,:id => m.id), method: :delete, data: { confirm: 'Seguro?' }, class: "btn btn-danger"  do %>
+            <i class="glyphicon glyphicon-remove" ></i>
+          <% end %>
+        </div>
+
+        </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+<%= link_to 'Editar', edit_test_path(@test) %> |
+<%= link_to 'Volver', tests_path %>

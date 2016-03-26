@@ -1,8 +1,12 @@
+<h3><%= @patient.persona.first_name %> <%= @patient.persona.last_name %> </h3>
+
 <%= simple_form_for ([@patient, @ficha, @registro])  do |f| %>
+ <%= f.input :specialist_id,:collection => @especialistas, :value_method => :id,:label => "Especialista" ,:include_blank => false %>
   <%= f.input :fecha %>
   <%= f.input :resumen %>
-  <%= f.input :detalle %>
-  <%= f.input :specialist_id%>
+  <%= f.input :detalle, as: :text %>
 
   <%= f.submit %>
 <% end %>
+
+

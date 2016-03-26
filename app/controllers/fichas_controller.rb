@@ -5,7 +5,15 @@ def show
 end
 
 def index
+  p params
   @ficha = Ficha.find_by(:patient_id => params[:patient_id])
+  @paciente = Patient.find(params[:patient_id])
+  p "Detalle paciente"
+  p @paciente
+
+  @persona = Persona.find_by(:patient_id => @paciente.id)
+  p "Detalle persona"
+  p @persona
   if tieneFicha?
 
     p "No se creo, ya existe ficha"

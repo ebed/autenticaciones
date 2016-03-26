@@ -1,2 +1,67 @@
-<%= @registro.resumen %>
-<%= @registro.detalle %>
+  <h1>Detalle Registro de Ficha</h1>
+
+<table class="table table-bordered">
+  <thead  class="thead-inverse">
+    <tr>
+      <th>Paciente</th>
+      <td colspan=2><%= @patient.persona.first_name %> <%= @patient.persona.second_name %> <%= @patient.persona.last_name %></td>
+    </tr>
+  </thead>
+  <tbody>
+     <tr>
+      <th scope="row" width="50">Fecha</th>
+      <td><%= @registro.fecha %></td>
+    </tr>
+    <tr>
+      <th scope="row" width="50">Resumen</th>
+      <td><%= @registro.resumen %></td>
+    </tr>
+    <tr>
+      <th scope="row">Detalle</th>
+      <td><%= @registro.detalle %></td>
+    </tr>
+    <tr>
+      <td colspan=2>
+        <table class="table table-bordered">
+          <tr>
+            <th colspan=3>Pruebas</th>
+            <th width="10">
+            <% if @testssinuso.size > 0 %>
+              <%= link_to new_patient_ficha_registro_test_instance_path(:ficha_id => @ficha.id, :registro_id => @registro.id), class: "btn btn-success btn-xs" do %>
+                <i class="glyphicon glyphicon-plus"> </i>
+              <% end %>
+            <% end %>
+            </th>
+
+          </tr>
+          <% @tests.each do |t| %>
+          <tr>
+            <td><%= t.test.nombre %></td>
+            <td><%= t.test.detalle %></td>
+            <td>
+
+                <div class="btn-group  btn-group-sm" role="group" aria-label="...">
+                  <%= link_to patient_ficha_registro_test_instance_path(:ficha_id => @ficha.id, :registro_id => @registro.id, :id => t.id), class: "btn btn-info" do %>
+                      <i class="glyphicon glyphicon-eye-open"></i>
+
+                    <% end %>
+
+                      <%= link_to  edit_patient_ficha_registro_test_instance_path(:ficha_id => @ficha.id, :registro_id => @registro.id, :id => t.id), class: "btn btn-primary" do %>
+                        <i class="glyphicon glyphicon-edit"></i>
+                      <% end %>
+
+                      <%= link_to patient_ficha_registro_test_instance_path(:ficha_id => @ficha.id, :registro_id => @registro.id, :id => t.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"  do %>
+                        <i class="glyphicon glyphicon-remove" ></i>
+                      <% end %>
+                    </div>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Editar', edit_patient_ficha_registro_path(:ficha_id => @ficha.id, :id => @registro.id) %> |
+<%= link_to 'Volver', patient_fichas_path(@patient.id) %>

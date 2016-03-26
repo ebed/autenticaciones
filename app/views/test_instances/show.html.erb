@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Test:</strong>
+  <%= @test_instance.test_id %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @test_instance.fecha %>
+</p>
+
+<p>
+  <strong>Registro:</strong>
+  <%= @test_instance.registro_id %>
+</p>
+<% if @metricas.size > 0 %>
+<%= link_to 'Agregar medicion', new_patient_ficha_registro_test_instance_medicion_path(:ficha_id => params[:ficha_id], :id => @test_instance.id,  :registro_id => params[:registro_id], :test_instance_id => @test_instance.id) %>
+<% end %>
+<% @mediciones.each do |medicion| %>
+<p>
+<%= medicion.id %> |
+<%= medicion.metrica.nombre %> |
+<%= medicion.valor %> |
+<%= medicion.observacion %> |
+
+
+
+ <div class="btn-group  btn-group-sm" role="group" aria-label="...">
+  <%= link_to patient_ficha_registro_test_instance_medicion_path(:ficha_id => @ficha.id, :test_instance_id =>  @test_instance.id ,:id => medicion.id), class: "btn btn-info" do %>
+      <i class="glyphicon glyphicon-eye-open"></i>
+
+    <% end %>
+
+      <%= link_to  edit_patient_ficha_registro_test_instance_medicion_path(:ficha_id => @ficha.id, :test_instance_id => @test_instance.id  ,:id => medicion.id), class: "btn btn-primary" do %>
+        <i class="glyphicon glyphicon-edit"></i>
+      <% end %>
+
+      <%= link_to patient_ficha_registro_test_instance_medicion_path(:ficha_id => @ficha.id, :test_instance_id =>@test_instance.id  ,:id => medicion.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"  do %>
+        <i class="glyphicon glyphicon-remove" ></i>
+      <% end %>
+    </div>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_patient_ficha_registro_test_instance_path(:ficha_id => params[:ficha_id], :id => @test_instance.id,  :registro_id => params[:registro_id]) %> |
+<%= link_to 'Back',patient_ficha_registro_path(:id =>params[:registro_id] )  %>

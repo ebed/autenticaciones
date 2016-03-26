@@ -1,0 +1,5 @@
+<h1>Nueva Medicion</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Volver', patient_ficha_registro_test_instance_path(:ficha_id=>@ficha.id, :id=>params[:id],:patient_id=>@patient.id, :registro_id=>@registro.id, :test_instance_id=>@test_instance.id) %>

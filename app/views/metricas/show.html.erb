@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Pacientes</h1>
+<h2 class="sub-header">Detalle</h2>
+<p>
+  <strong>ID:</strong><%= @metrica.id %>
+</p>
+<p>
+  <strong>Nombre:</strong><%= @metrica.nombre %>
+</p>
+<p>
+  <strong>Detalle:</strong><%= @metrica.detalle %>
+</p>
+
+<%= link_to 'Volver', test_path(@metrica.test_id) %>

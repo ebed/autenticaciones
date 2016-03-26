@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321205853) do
+ActiveRecord::Schema.define(version: 20160325151707) do
 
   create_table "fichas", force: :cascade do |t|
     t.integer  "patient_id", limit: 4
@@ -26,6 +26,24 @@ ActiveRecord::Schema.define(version: 20160321205853) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "persona_id", limit: 4
+  end
+
+  create_table "medicions", force: :cascade do |t|
+    t.integer  "ficha_id",         limit: 4
+    t.integer  "metrica_id",       limit: 4
+    t.string   "valor",            limit: 255
+    t.string   "observacion",      limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "test_instance_id", limit: 4
+  end
+
+  create_table "metricas", force: :cascade do |t|
+    t.string   "nombre",     limit: 255
+    t.string   "detalle",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "test_id",    limit: 4
   end
 
   create_table "patients", force: :cascade do |t|
@@ -79,6 +97,29 @@ ActiveRecord::Schema.define(version: 20160321205853) do
     t.integer  "persona_id", limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+  end
+
+  create_table "test_instances", force: :cascade do |t|
+    t.integer  "test_id",     limit: 4
+    t.date     "fecha"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "registro_id", limit: 4
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.integer  "tipo_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "nombre",     limit: 255
+    t.string   "detalle",    limit: 255
+  end
+
+  create_table "tipos", force: :cascade do |t|
+    t.string   "nombre",      limit: 255
+    t.string   "descripcion", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "users", force: :cascade do |t|

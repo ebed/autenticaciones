@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ficha_id: 1
+  metrica_id: 1
+  valor: MyString
+  observacion: MyString
+
+two:
+  ficha_id: 1
+  metrica_id: 1
+  valor: MyString
+  observacion: MyString

@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Medición</h1>
+<h2 class="sub-header">Detalle</h2>
+<p>
+  <strong>ID:</strong><%= @medicion.id %>
+</p>
+<p>
+  <strong>Metrica:</strong><%= @medicion.metrica.nombre %>
+</p>
+<p>
+  <strong>Valor:</strong><%= @medicion.valor %>
+</p>
+<p>
+  <strong>Detalle:</strong><%= @medicion.observacion %>
+</p>
+
+<%= link_to 'Volver',  patient_ficha_registro_test_instance_path(:ficha_id=>@ficha.id, :id=>@test_instance.id,:patient_id=>@patient.id, :registro_id=>@registro.id, :test_instance_id=>@test_instance.id) %>

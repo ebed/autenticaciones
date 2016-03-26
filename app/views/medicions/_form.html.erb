@@ -1,0 +1,11 @@
+<%= simple_form_for ([ @patient, @ficha, @registro, @test_instance, @medicion])  do |f| %>
+  <%= f.hidden_field :test_instance_id, :value => @test_instance.id %>
+  <%= f.input :valor %>
+  <%= f.input :observacion %>
+  <%= f.input :metrica_id,:collection => @metricas, :value_method => :id,:label => "Metrica" ,:include_blank => false %>
+
+
+  <%= f.submit %>
+<% end %>
+
+

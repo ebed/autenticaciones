@@ -1,17 +1,36 @@
 Rails.application.routes.draw do
-  resources :personas
-  resources :locations
 
-  resources :specialists
+  resources :personas do
+    resources :locations
+  end
+
+  resources :specialists do
+    resources :personas do
+      resources :locations
+    end
+  end
+
   resources :patients do
     resources :personas do
       resources :locations
     end
     resources :fichas do
-      resources :registros
+      resources :registros do
+        resources :test_instances do
+          resources :medicions
+        end
+      end
     end
   end
+  resources :tipos
+
+
   resources :posts
+
+  resources :tests do
+    resources :metricas
+  end
+
   root 'paginas#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

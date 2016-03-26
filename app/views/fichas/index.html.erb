@@ -2,7 +2,7 @@
 
 <h1 class="page-header">Ficha</h1>
 
-<h2 class="sub-header">Registros de Paciente</h2>
+<h2 class="sub-header">Registros de Paciente <%= @persona.first_name %> <%= @persona.second_name %> <%= @persona.last_name %></h2>
 <div >
    <table class="table table-bordered table-hover">
 
@@ -33,6 +33,12 @@
                 <th>RESUMEN</th>
                 <th>FECHA</th>
                 <th>ESPECIALISTA</th>
+                <th>
+                    <%= link_to new_patient_ficha_registro_path(:ficha_id => @ficha.id), class: "btn btn-success btn-xs" do %>
+                      <i class="glyphicon glyphicon-plus"> </i>
+                    <% end %>
+
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -46,6 +52,22 @@
 
                   <td><%= @specialist.persona.first_name   %> <%= @specialist.persona.last_name   %> </td>
 
+                  <td>
+                    <div class="btn-group  btn-group-sm" role="group" aria-label="...">
+                  <%= link_to patient_ficha_registro_path(:ficha_id => @ficha.id, :id => reg.id), class: "btn btn-info" do %>
+                      <i class="glyphicon glyphicon-eye-open"></i>
+
+                    <% end %>
+
+                      <%= link_to  edit_patient_ficha_registro_path(:ficha_id => @ficha.id, :id => reg.id), class: "btn btn-primary" do %>
+                        <i class="glyphicon glyphicon-edit"></i>
+                      <% end %>
+
+                      <%= link_to patient_ficha_registro_path(:ficha_id => @ficha.id, :id => reg.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"  do %>
+                        <i class="glyphicon glyphicon-remove" ></i>
+                      <% end %>
+                    </div>
+                  </td>
                 </tr>
               <% end %>
 
