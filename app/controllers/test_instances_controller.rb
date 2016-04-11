@@ -28,7 +28,7 @@ class TestInstancesController < ApplicationController
     @testinstanciasexistentes = TestInstance.where(:registro_id => @registro.id)
     @tests = Test.where.not(:id => @testinstanciasexistentes.map(&:test_id))
     p "tests a mostrar"
-    p @tests
+    p @testinstanciasexistentes
   end
 
   # GET /test_instances/1/edit
@@ -49,7 +49,7 @@ class TestInstancesController < ApplicationController
         format.json { render :show, status: :created, location: @test_instance }
       else
         format.html { render :new }
-        format.json { render json: @test_instance.errors, status: :unprocessable_entity }
+        format.json { render json: @test_instance.errors, statustus: :unprocessable_entity }
       end
     end
   end

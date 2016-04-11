@@ -10,6 +10,8 @@ class PatientsController < ApplicationController
   # GET /patients/1
   # GET /patients/1.json
   def show
+    @mediciones = Metrica.generate_graph(params[:id],1)
+    @metricas = Metrica.joins(:medicions).distinct
   end
 
   # GET /patients/new

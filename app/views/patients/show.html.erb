@@ -27,3 +27,12 @@
 <%= link_to 'Ver Ficha',  patient_fichas_path(@patient) %>
 <%= link_to 'Editar', edit_patient_path(@patient) %> |
 <%= link_to 'Volver', patients_path %>
+
+<select class="metricas" name="metrica">
+  <%= @metricas.each do |m| %>
+    <option value='<%= m.id %>'><%= m.nombre %></option>
+  <% end %>
+</select>
+
+
+ <%= line_chart  Metrica.generate_graph(params[:id],2), discrete: true  %>

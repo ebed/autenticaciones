@@ -3,7 +3,7 @@
     <%= p.input :first_name , label: "Primer Nombre" %>
     <%= p.input :second_name , label: "Segundo Nombre" %>
     <%= p.input :last_name, label: "Apellido"  %>
-    <%= p.input :dob, label: "Fecha Nacimiento" %>
+    <%= p.input :dob, label: "Fecha Nacimiento", start_year: Date.today.year - 110, end_year: Date.today.year, :input_html => {:style => 'width: 140px'}%>
     <%= p.simple_fields_for :location do |l| %>
       <%= l.input :address , label: "Dirección" %>
       <%= l.input :city, label: "Ciudad"  %>

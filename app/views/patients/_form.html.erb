@@ -9,10 +9,11 @@
     <p/>
 
     <%= p.input :rut,  label: "RUT", :input_html => {:style => 'width: 250px'} %>
-    <%= p.input :dv , label: " - ", :input_html => {:style => 'width: 30px'}%>
+    <%= p.input :dv , label: " - ", :input_html => {:style => 'width: 50px'}%>
     <p/>
-     <%= p.input :dob,  label: "Fecha Nacimiento", :input_html => {:style => 'width: 100px'}%>
+     <%= p.input :dob,  label: "Fecha Nacimiento", start_year: Date.today.year - 110, end_year: Date.today.year, :input_html => {:style => 'width: 140px'}%>
     <%= p.simple_fields_for :location do |l| %>
+    <p/>
       <%= l.input :address ,  label: "Dirección" %>
       <%= l.input :city,  label: "Ciudad"  %>
     <% end %>
